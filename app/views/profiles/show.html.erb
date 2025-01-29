@@ -2,21 +2,30 @@
   <h1 class="text-3xl font-bold ">Your profile</h1>
 
 
-  <div class="mt-5">
-    <%= @user.first_name%>
+  
+  <% if @user.first_name.present? %>
+    <div class="mt-5">
+      <%= @user.first_name%>
   </div>
+  <% end %>
 
-  <div class="mt-5">
-    <%= @user.last_name%>
+  <% if @user.last_name.present? %>
+    <div class="mt-5">
+      <%= @user.last_name%>
   </div>
+  <% end %>
 
-  <div class="mt-5">
-    <%= @user.headline%>
+  <% if @user.headline.present? %>
+    <div class="mt-5">
+      <%= @user.headline%>
   </div>
+  <% end %>
 
-  <div class="mt-5">
-    <%= @user.language%>
+  <% if @user.language.present? %>
+    <div class="mt-5">
+      <%= @user.language%>
   </div>
+  <% end %>
 
   <div class="mt-5">  
     <% if @user.website.present? %>
