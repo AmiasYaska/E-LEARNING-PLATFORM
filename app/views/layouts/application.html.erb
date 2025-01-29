@@ -28,16 +28,22 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <div class="flex flex-row py-8 px-8 justify-end ">
-      <div class="mr-5">
-        <%= link_to 'Profile', profile_path %>
+    <div class="flex flex-row py-8 px-8 justify-between  ">
+
+      <div class="flex">
+        <%= link_to 'Home', root_path %>
       </div>
 
-      <div>
-        <% if user_signed_in? %>
-          <%= link_to 'Sign Out', destroy_user_session_path, data: {turbo_method: :delete, confirm: "U wanna sign Out!"} %>          
-        <% end %>
-        
+      <div class="flex flex-row">
+        <div class="mr-5">
+          <%= link_to 'Profile', profile_path %>
+        </div>
+
+        <div>
+          <% if user_signed_in? %>
+            <%= link_to 'Sign Out', destroy_user_session_path, data: {turbo_method: :delete, confirm: "U wanna sign Out!"} %>          
+          <% end %>
+        </div>  
       </div>
 
     </div>
