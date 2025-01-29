@@ -1,16 +1,25 @@
-<div>
-  <h1>Your profile</h1>
+<div class="flex flex-col items-center">
+  <h1 class="text-3xl font-bold ">Your profile</h1>
 
-  <%= @user.first_name%>
 
-  <%= @user.last_name%>
+  <div class="mt-5">
+    <%= @user.first_name%>
+  </div>
 
-  <%= @user.headline%>
+  <div class="mt-5">
+    <%= @user.last_name%>
+  </div>
 
-  <%= @user.website%>
+  <div class="mt-5">
+    <%= @user.headline%>
+  </div>
 
-  <div>
-    <%= link_to 'Edit Profile', edit_profile_path %>
+  <div class="mt-5">
+    <%= link_to @user.website, (@user.website.start_with?("http") ? @user.website : "https://#{@user.website}"), target: "_blank", rel: "noopener noreferrer" %>
+  </div>
+
+  <div class="mt-5">
+    <%= link_to 'Edit Profile', edit_profile_path, class:"px-3 py-2 text-white bg-blue-500 hover:bg-blue-300" %>
   </div>
 
 </div>
