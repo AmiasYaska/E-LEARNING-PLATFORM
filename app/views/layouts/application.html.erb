@@ -24,8 +24,15 @@
   </head>
 
   <body>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+    <div class="py-8 px-8 ">
+      <%= link_to 'Profile', profile_path %>
+    </div>
+
     <%= yield %>
+    
   </body>
 </html>

@@ -1,12 +1,29 @@
-<%= form_with(model: user) do |form|%>
-    <%= form.text_field :first_name %>
+<div>
+    <%= form_with(model: user) do |form|%>
 
-    <%= form.text_field :last_name %>
+        <div class="mt-5">
+            <%= form.text_field :first_name, class:"rounded border bg-gray-400" %>
+        </div>
 
-    <%= form.text_area :headline %>
+        <div class="mt-5">
+            <%= form.text_field :last_name, class:"rounded border bg-gray-400" %>
+        </div>
 
-    <%= form.text_field :website %>
+        <div class="mt-5">
+            <%= form.email_field :email, class:"rounded border bg-gray-400" %>
+        </div>
 
-    <%= form.button "Save" %>
+        <div class="mt-5">
+            <%= form.text_area :headline, class:"rounded border bg-gray-400" %>
+        </div>
 
-<% end %>
+        <div class="mt-5">
+            <%= form.text_field :website, class:"rounded border bg-gray-400" %>
+        </div>
+
+        <div class="mt-5">
+            <%= form.button "Save", class:"py-2 px-3 bg-blue-400 text-white" %>
+        </div>
+
+    <% end %>
+</div>
