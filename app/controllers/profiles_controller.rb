@@ -20,6 +20,6 @@ class ProfilesController < ApplicationController
 
   private
   def set_params
-    params.expect(user: [:first_name, :last_name, :headline, :website])
+    params.expect(user: [:first_name, :last_name, :headline, :website, :email, :language])
   end
 end

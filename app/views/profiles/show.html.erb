@@ -14,6 +14,10 @@
     <%= @user.headline%>
   </div>
 
+  <div class="mt-5">
+    <%= @user.language%>
+  </div>
+
   <div class="mt-5">  
     <% if @user.website.present? %>
       <%= link_to @user.website, (@user.website.start_with?("http") ? @user.website : "https://#{@user.website}"), target: "_blank", rel: "noopener noreferrer" %>

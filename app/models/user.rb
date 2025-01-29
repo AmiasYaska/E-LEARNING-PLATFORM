@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  SUPPORTED_LANGUAGES = ["English", "Arabic", "French", "SPanish", "Portuguese"].freeze
+  SUPPORTED_LANGUAGES = ["English", "Arabic", "French", "Spanish", "Portuguese"].freeze
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :language, inclusion: {in :SUPPORTED_LANGUAGES}
+  validates :language, inclusion: { in: SUPPORTED_LANGUAGES }
 
 end
