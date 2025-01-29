@@ -11,10 +11,10 @@ class ProfilesController < ApplicationController
 
   def update
     @user = current_user
-    if @user(set_params)
-      redirect_to @profile_path, notice: "Profile updated"
+    if @user.update(set_params)
+      redirect_to profile_path, notice: "Profile updated"
     else
-      render: :edit, status: :unprocessabke_entity
+      render :edit, status: :unprocessabke_entity
     end
   end
 
