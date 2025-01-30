@@ -8,12 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Video.find_or_create_create!(
-    title: "Ruby on Rails",
-    author: "Amias Yaska",
-    description: "You will learn to code and be able to make web apps asap",
-    thumbnail: File.open(Rails.root.join("app/assets/images/code.jpeg"))
-)
+# Video.find_or_create_create!(
+#     title: "Ruby on Rails",
+#     author: "Amias Yaska",
+#     description: "You will learn to code and be able to make web apps asap",
+#     thumbnail: File.open(Rails.root.join("app/assets/images/code.jpeg"))
+# )
 
 videos = [
     {
@@ -36,3 +36,10 @@ videos = [
     },
 ]
 
+videos.each do|video_data|
+    Video.find_or_create_by!(title: video_data[:title]) do |video|
+        video.author = video_data[:author]
+        video.description = video_data[:description]
+        video.thumbnail.attach(io: File.open(Rails.root.join("app/assets/images/#{video_data[:thumbnail]}")), filename: video_data[:thumbnail])
+    end
+end
