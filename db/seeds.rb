@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Video.create!(
+    title: "Ruby on Rails",
+    author: "Amias Yaska",
+    description: "You will learn to code and be able to make web apps asap",
+    thumbnail: File.open(Rails.root.join("app/assets/images/code.jpeg"))
+)
