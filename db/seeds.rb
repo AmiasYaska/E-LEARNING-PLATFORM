@@ -8,9 +8,31 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Video.create!(
+Video.find_or_create_create!(
     title: "Ruby on Rails",
     author: "Amias Yaska",
     description: "You will learn to code and be able to make web apps asap",
     thumbnail: File.open(Rails.root.join("app/assets/images/code.jpeg"))
 )
+
+videos = [
+    {
+        title: "Ruby on Rails",
+        author: "Amias Yaska",
+        description: "You will learn to code and be able to make web apps asap",
+        thumbnail:"code.jpeg"
+    },
+    {
+        title: "Salsa Dancing",
+        author: "Top A",
+        description: "You may learn to code and be able to make web apps asap",
+        thumbnail:"code2.jpeg"
+    },
+    {
+        title: "Quiz Game",
+        author: "BushPig",
+        description: "You will learn to code and be able to make web apps asap",
+        thumbnail:"code3.jpeg"
+    },
+]
+
