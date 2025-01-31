@@ -10,4 +10,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :language, inclusion: { in: SUPPORTED_LANGUAGES }
 
+  has_many :enrollments
+  has_many :videos, through: :enrollments
+
 end
