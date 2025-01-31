@@ -1,10 +1,19 @@
 <div class="p-8 max-w-md mx-auto">
   
-  
-  <% if @video.video_file.attached? %>
+  <% if @video.video_file.attached? && current_user.enrollments.where(video: @video).exists? %>
     <video id="player" playsinline control class="w-full">
       <source src="<%=url_for(@video.video_file)%>" type=" <%= @video.video_file.content_type %>">
     </video>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        new Plyr("#player");
+      });
+    </script>
+
+  <% else %>
+    <%= image_tag @video.thumbnail, class:"w-full" %>
+    
   <% end %>
   
   <h3 class="mt-2"><%= @video.title %></h3>
