@@ -1,17 +1,11 @@
 <div class="p-8 max-w-md mx-auto">
   
   <% if @video.video_file.attached? %>
-    <% if user_signed_in? && current_user.enrollments.where(video: @video).exists? %> 
-    <video id="player" playsinline control class="w-full">
+    <% if user_signed_in? && current_user.enrollments.exists?(video: @video) %> 
+    <video id="player" playsinline control class="w-full" data-enrolled="true">
       <source src="<%=url_for(@video.video_file)%>" type=" <%= @video.video_file.content_type %>">
     </video>
 
-    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        new Plyr("#player");
-      });
-    </script>
     <% else %>
       <%= image_tag @video.thumbnail, class:"w-full" %>
    <% end %>
@@ -34,5 +28,15 @@
     <%= button_to 'Enroll Now', new_user_session_path, class:"mt-5 py-2 px-2 rounded-lg bg-blue-500 text-white" %>
 
   <% end %>
-  
 </div>
+
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script>
+  document.addEventListener("turbo:load", ( ) => {
+    const playerElement = document.getElementById("player");
+    if (playerElement && playerElement.dataset.enrolled === 'true') {
+      new Plyr(playerElement)
+    }
+  });
+
+</script>

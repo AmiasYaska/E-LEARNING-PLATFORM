@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 md:grid-cols-3 p-8 gap-8">
 
   <% @videos.each do |video|%>
-    <%= link_to video_path(video), class:"" do %>
+    <%= link_to video_path(video), data: { turbo: false} do %>
       
       <% if video.thumbnail.attached? %>
         <%= image_tag video.thumbnail, class:"w-full h-48 rounded" %>

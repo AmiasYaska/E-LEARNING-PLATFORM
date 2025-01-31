@@ -4,7 +4,7 @@ class EnrollmentsController < ApplicationController
     def create
         @video = Video.find(params.expect(:video_id))
         current_user.enrollments.create(video: @video)
-        redirect_to video_path(@video), notice: "Enrolled successfully"
+        redirect_to video_path(@video), notice: "Enrolled successfully", status: :see_other
     end
 
 end
