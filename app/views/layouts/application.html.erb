@@ -17,6 +17,7 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -57,6 +58,7 @@
 </html>
 
 <script>
-<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-
+  document.addEventListener('DOMContentLoaded', () => {
+    new Plyr("#player");
+  });
 </script>

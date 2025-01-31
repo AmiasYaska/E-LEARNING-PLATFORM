@@ -1,7 +1,10 @@
 <div class="p-8 max-w-md mx-auto">
   
-  <% if @video.thumbnail.attached? %>
-    <%= image_tag @video.thumbnail, class:"w-full" %>
+  
+  <% if @video.video_file.attached? %>
+    <video id="player" playsinline control class="w-full">
+      <source src="<%=url_for(@video.video_file)%>" type=" <%= @video.video_file.content_type %>">
+    </video>
   <% end %>
   
   <h3 class="mt-2"><%= @video.title %></h3>
