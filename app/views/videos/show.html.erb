@@ -1,10 +1,10 @@
-<div>
+<div class="p-8 max-w-md mx-auto">
   
   <% if @video.thumbnail.attached? %>
-    <%= image_tag @video.thumbnail %>
+    <%= image_tag @video.thumbnail, class:"w-full" %>
   <% end %>
   
-  <h3 class="mt-5"><%= @video.title %></h3>
+  <h3 class="mt-2"><%= @video.title %></h3>
 
   <p class="mt-5"><%= @video.author %> </p>
 
