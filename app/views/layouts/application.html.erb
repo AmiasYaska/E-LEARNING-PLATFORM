@@ -53,12 +53,13 @@
     </div>
 
     <%= yield %>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        new Plyr("#player");
+      });
+    </script>
     
   </body>
-</html>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    new Plyr("#player");
-  });
-</script>
+</html>
