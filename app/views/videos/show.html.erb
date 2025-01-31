@@ -10,10 +10,16 @@
 
   <p class="mt-5"><%= @video.description %> </p>
 
-  <% if @video.enrollments.where(video: @video).exists? %>
-    <p class="mt-5 text-xl ">Already enrolled</p>
-  <% else %>
-    <%= button_to 'Enroll Now', video_enrollment_path(@video), class:"mt-5 py-2 px-2 rounded-lg bg-blue-500 text-white" %>
-  <% end %>
+  
+  <% if user_signed_in? %>
+    <% if current_user.enrollments.where(video: @video).exists? %>
+      <p class="mt-5 text-xl ">Already enrolled</p>
+    <% else %>
+      <%= button_to 'Enroll Now', video_enrollment_path(@video), class:"mt-5 py-2 px-2 rounded-lg bg-blue-500 text-white" %>
+    <% end %>
+  <% else %> 
+    <%= button_to 'Enroll Now', new_user_session_path, class:"mt-5 py-2 px-2 rounded-lg bg-blue-500 text-white" %>
 
+  <% end %>
+  
 </div>
