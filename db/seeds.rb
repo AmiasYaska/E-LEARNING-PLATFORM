@@ -20,19 +20,22 @@ videos = [
         title: "Ruby on Rails",
         author: "Amias Yaska",
         description: "You will learn to code and be able to make web apps asap",
-        thumbnail:"code.jpeg"
+        thumbnail:"code.jpeg",
+        video_file: "video1.mp4"
     },
     {
         title: "Salsa Dancing",
         author: "Top A",
         description: "You may learn to code and be able to make web apps asap",
-        thumbnail:"code2.jpeg"
+        thumbnail:"code2.jpeg",
+        video_file: "video1.mp4"
     },
     {
         title: "Quiz Game",
         author: "BushPig",
         description: "You will learn to code and be able to make web apps asap",
-        thumbnail:"code3.jpeg"
+        thumbnail:"code3.jpeg",
+        video_file: "video1.mp4"
     },
 ]
 
@@ -41,5 +44,6 @@ videos.each do|video_data|
         video.author = video_data[:author]
         video.description = video_data[:description]
         video.thumbnail.attach(io: File.open(Rails.root.join("app/assets/images/#{video_data[:thumbnail]}")), filename: video_data[:thumbnail])
+        video.video_file.attach(io: File.open(Rails.root.join("app/assets/videos/#{video_data[:video_file]}")), filename: video_data[:video_file])
     end
 end
