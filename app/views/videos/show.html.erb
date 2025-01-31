@@ -11,9 +11,9 @@
   <p class="mt-5"><%= @video.description %> </p>
 
   <% if @video.enrollments.where(video: @video).exists? %>
-    <p class="mt-2 text-xl ">Already enrolled</p>
+    <p class="mt-5 text-xl ">Already enrolled</p>
   <% else %>
-    <%= button_to 'Enroll Now' video_enrollment_path(@video), class:"py-2 px-2 rounded-lg bg-blue-500 text-white" %>
+    <%= button_to 'Enroll Now', video_enrollment_path(@video), class:"mt-5 py-2 px-2 rounded-lg bg-blue-500 text-white" %>
   <% end %>
 
 </div>
