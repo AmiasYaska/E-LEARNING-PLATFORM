@@ -2,13 +2,12 @@
   
   <% if @video.video_file.attached? %>
     <% if user_signed_in? && current_user.enrollments.exists?(video: @video) %> 
-    <video id="player" playsinline controls data-controller="video-player" class="w-full" >
-      <source src="<%=url_for(@video.video_file)%>" type="<%= @video.video_file.content_type %>">
-    </video>
-
+      <video id="player" playsinline controls data-controller="video-player" class="w-full" >
+        <source src="<%=url_for(@video.video_file)%>" type="<%= @video.video_file.content_type %>">
+      </video>
     <% else %>
       <%= image_tag @video.thumbnail, class:"w-full" %>
-   <% end %>
+    <% end %>
   <% end %>
   
   <h3 class="mt-2"><%= @video.title %></h3>
