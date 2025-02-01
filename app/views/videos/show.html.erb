@@ -2,7 +2,7 @@
   
   <% if @video.video_file.attached? %>
     <% if user_signed_in? && current_user.enrollments.exists?(video: @video) %> 
-    <video id="player" playsinline control class="w-full" data-enrolled="true">
+    <video id="player" playsinline control class="w-full" data-controller="video_player" data-enrolled="true">
       <source src="<%=url_for(@video.video_file)%>" type=" <%= @video.video_file.content_type %>">
     </video>
 
@@ -29,14 +29,3 @@
 
   <% end %>
 </div>
-
-<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-<script>
-  document.addEventListener("turbo:load", ( ) => {
-    const playerElement = document.getElementById("player");
-    if (playerElement && playerElement.dataset.enrolled === 'true') {
-      new Plyr(playerElement)
-    }
-  });
-
-</script>
