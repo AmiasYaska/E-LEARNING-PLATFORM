@@ -37,6 +37,13 @@ videos = [
         thumbnail:"code3.jpeg",
         video_file: "video1.mp4"
     },
+    {
+        title: "Sunday",
+        author: "BushPig",
+        description: "You will learn to code and be able to make web apps asap",
+        thumbnail:"code3.jpeg",
+        video_file: "video1.mp4"
+    },
 ]
 
 videos.each do|video_data|
