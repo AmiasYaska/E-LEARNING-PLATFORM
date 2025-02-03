@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit, :update]
 
   resources :videos, only: [:index, :show] do
+    member do
+      get "progress"
+      patch "progress"
+    end
     resource :enrollment, only: [:create]
   end
 
