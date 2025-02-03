@@ -17,6 +17,20 @@
   <p class="mt-5"><%= @video.description %> </p>
 
   
+  <% if current_user.enrollments.exists?(video: @video) %>
+    <% enrollment = current_user.enrollment.find_by(video: @video) %>
+    <div class="mt-5">
+      <div class="h-2 rounded">
+        <%= (enrollment.progress || 0) * 100 %>
+      </div>
+
+      <p>Watched <%= ((enrollment.progress || 0) * 100).round(1) %> </p>
+    </div>
+    
+  <% end %>
+  
+
+  
   <% if user_signed_in? %>
     <% if current_user.enrollments.where(video: @video).exists? %>
       <p class="mt-5 text-xl ">Already enrolled</p>
