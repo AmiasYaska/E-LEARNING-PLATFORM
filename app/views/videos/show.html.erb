@@ -18,12 +18,8 @@
 
   
   <% if current_user.enrollments.exists?(video: @video) %>
-    <% enrollment = current_user.enrollment.find_by(video: @video) %>
+    <% enrollment = current_user.enrollments.find_by(video: @video) %>
     <div class="mt-5">
-      <div class="h-2 rounded">
-        <%= (enrollment.progress || 0) * 100 %>
-      </div>
-
       <p>Watched <%= ((enrollment.progress || 0) * 100).round(1) %> </p>
     </div>
     
