@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resource :enrollment, only: [:create]
   end
 
+  get "/my_learning", to: "enrollments#index", as: :my_learning
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   authenticated :user do

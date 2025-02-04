@@ -7,4 +7,8 @@ class EnrollmentsController < ApplicationController
         redirect_to video_path(@video), notice: "Enrolled successfully", status: :see_other
     end
 
+    def index
+        @videos = current_user.enrollments.includes(:video)
+    end
+
 end
