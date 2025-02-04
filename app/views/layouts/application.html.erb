@@ -32,11 +32,23 @@
         <%= link_to 'Home', videos_path %>
       </div>
 
-      <div class="flex items-center text-center">
-        <%= form_with url: videos_path, method: :get, class:"flex gap-2" do %>
-          <%= text_field_tag :search, 
-            params[:search], placeholder: "Search for anything", 
-            class:"border border-gray-400 rounded-full py-2 px-3 text-center" %>
+      <div data-controller="autocomplete", class="flex items-center text-center">
+        <%= form_with url: videos_path, method: :get, data: {autocomplete_target: "form"} class:"flex gap-2" do %>
+          <div class="relative">
+            <%= text_field_tag :search, 
+              params[:search], placeholder: "Search for anything", 
+              data: {
+                action: "input->autocomplete#search",
+                autocomplete_target: "input"
+              },
+              class:"border border-gray-400 rounded-full py-2 px-3 text-center" 
+            %>
+
+            <ul class="absolute w-full bg-white mt-1 hidden " data-autocomplete_target= "results" data-action="click->autocomplete#selectResult">
+
+            </ul>
+            
+            </div>
         <% end %>
       </div>
 
