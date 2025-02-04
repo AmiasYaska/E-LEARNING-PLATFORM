@@ -1,6 +1,10 @@
 class VideosController < ApplicationController
   def index
-    @videos = Video.all
+    @videos = if params[:search].present? 
+      Video.search(params[:search])     
+    else
+      Video.all
+    end
   end
 
   def show
