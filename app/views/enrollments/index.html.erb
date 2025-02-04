@@ -1,19 +1,23 @@
-<div class="grid grid-cols-1 md:grid-cols-3 items-center p-12 ">
+<div class="p-12  ">
+    <h2>My Learning </h2>
+
     <% if @enrollments.any? %>
-        <% enrollments.each do |enrol|%>
-            <%= video_path(enrol.video) %>
-            <div class="mt-5">
-                <%= image_tag enrol.video.thumbnail %>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 items-center ">
+            <% enrollments.each do |enrol|%>
+                <%= video_path(enrol.video) %>
+                <div class="mt-5">
+                    <%= image_tag enrol.video.thumbnail, class:"w-full h-48" %>
+                </div>
 
-            <div class="mt-3">
-                <%= enrol.video.title %>
-            </div>
+                <div class="mt-3">
+                    <%= enrol.video.title %>
+                </div>
 
-            <div class="mt-3">
-                <%= enrol.video.author %>
-            </div>
-        <% end %>
+                <div class="mt-3">
+                    <%= enrol.video.author %>
+                </div>
+            <% end %>
+        </div>
         
     <% else %>
       <p>You have not yet enrolled in any course </p>
