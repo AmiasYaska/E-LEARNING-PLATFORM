@@ -7,8 +7,8 @@ class Video < ApplicationRecord
 
     def self.search(query)
         where(
-            "title ILIKE :query OR description ILIKE :query OR author ILIKE :query",
-            query:"%#{sanitize_sql_like(query)}"
+            "title ILIKE :query OR description ILIKE :query",
+            query:"%#{sanitize_sql_like(query)}%"
         )
     end
 end

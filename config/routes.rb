@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit, :update]
 
   resources :videos, only: [:index, :show] do
-    collection do
-      get :search
-    end
+    get :search, on: :collection
     resource :progress, only: [:show, :update]
     resource :enrollment, only: [:create]
   end
