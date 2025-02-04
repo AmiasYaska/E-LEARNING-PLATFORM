@@ -26,13 +26,18 @@
 
   <body>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <div class="flex flex-row py-8 px-8 justify-between  ">
 
       <div class="flex">
         <%= link_to 'Home', videos_path %>
+      </div>
+
+      <div class="flex items-center text-center">
+        <%= form_with url: videos_path, method: :get, class:"flex gap-2" do %>
+          <%= text_field_tag :search, 
+            params[:search], placeholder: "Search for anything", 
+            class:"border border-gray-400 rounded-full py-2 px-3 text-center" %>
+        <% end %>
       </div>
 
       <div class="flex flex-row">
