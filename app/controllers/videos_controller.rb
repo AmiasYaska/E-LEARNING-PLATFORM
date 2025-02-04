@@ -12,7 +12,7 @@ class VideosController < ApplicationController
   end
 
   def autocomplete
-    suggestions = Video.autocomplete_search(params[:search])
+    suggestions = Video.autocomplete_search(params[:query])
     render json: suggestions
   end
 end

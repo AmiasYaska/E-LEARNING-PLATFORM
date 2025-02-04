@@ -21,7 +21,7 @@ export default class extends Controller {
         }
 
         try {
-            const response = await fetch("/videos/autocomplete?query=${encodeURIComponent(query)}")
+            const response = await fetch(`/videos/autocomplete?query=${encodeURIComponent(query)}`)
             const results = await response.json()
             this.displayResults(results)
         } catch(error) {
@@ -31,7 +31,9 @@ export default class extends Controller {
 
     displayResults(results) {
         this.resultsTarget.innerHTML = results.map(result => 
-            '<li class="px-3 py-2 hover:bg-gray-300 cursor-pointer">${result}</li>').join("")
+            `<li class="px-3 py-2 hover:bg-gray-300 cursor-pointer">${result}</li>`).join("")
+        this.resultsTarget.classList.remove("hidden")
+
     }
 
     selectResult(event) {
