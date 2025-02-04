@@ -18,15 +18,15 @@
 
   <p class="mt-5"><%= @video.description %> </p>
 
-  
-  <% if current_user.enrollments.exists?(video: @video) %>
+  <% if user_signed_in? %>
+    <% if current_user.enrollments.exists?(video: @video) %>
     <% enrollment = current_user.enrollments.find_by(video: @video) %>
     <div class="mt-5">
       <p>Watched <%= ((enrollment.progress || 0) * 100).round(1) %> </p>
     </div>
-    
+
+    <% end %>
   <% end %>
-  
 
   
   <% if user_signed_in? %>
@@ -39,4 +39,10 @@
     <%= button_to 'Enroll Now', new_user_session_path, class:"mt-5 py-2 px-2 rounded-lg bg-blue-500 text-white" %>
 
   <% end %>
+
+  
+  
+  
+  
+  
 </div>
