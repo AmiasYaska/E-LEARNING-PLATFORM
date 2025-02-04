@@ -3,7 +3,7 @@
 
     <% if @enrollments.any? %>
         <div class="grid grid-cols-1 md:grid-cols-3 items-center ">
-            <% enrollments.each do |enrol|%>
+            <% @enrollments.each do |enrol|%>
                 <%= video_path(enrol.video) %>
                 <div class="mt-5">
                     <%= image_tag enrol.video.thumbnail, class:"w-full h-48" %>
