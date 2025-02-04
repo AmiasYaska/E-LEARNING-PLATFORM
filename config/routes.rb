@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :videos, only: [:index, :show] do
     get :search, on: :collection
+    get :autocomplete, on: :collection
     resource :progress, only: [:show, :update]
     resource :enrollment, only: [:create]
   end

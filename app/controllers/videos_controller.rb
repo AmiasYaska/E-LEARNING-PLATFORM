@@ -11,5 +11,8 @@ class VideosController < ApplicationController
     @video = Video.find(params.expect(:id))
   end
 
-  
+  def autocomplete
+    suggestions = Video.autocomplete_search(params[:search])
+    render json: suggestions
+  end
 end
