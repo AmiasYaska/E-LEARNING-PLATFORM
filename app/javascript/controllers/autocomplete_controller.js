@@ -20,11 +20,11 @@ export default class extends Controller {
         }
 
         try {
-            response = await fetch("/videos/autocomplete?query=${encodeURIComponent(query)}")
-            results = await response.json()
+            const response = await fetch("/videos/autocomplete?query=${encodeURIComponent(query)}")
+            const results = await response.json()
             this.displayResults(results)
         } catch(error) {
-            console.log("Incomplete failed", error)
+            console.error("Incomplete failed", error)
         }
         
     }
