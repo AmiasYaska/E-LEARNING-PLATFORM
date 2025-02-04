@@ -16,7 +16,8 @@ export default class extends Controller {
 
     async fetchResults(query) {
         if(query.length < 2) {
-            this.inputTarget.innerHTML = ""
+            this.resultsTarget.innerHTML = ""
+            return
         }
 
         try {
@@ -26,6 +27,18 @@ export default class extends Controller {
         } catch(error) {
             console.error("Incomplete failed", error)
         }
-        
     }
+
+    displayResults(results) {
+        this.resultsTarget.innerHTML = results.map(result => 
+            '<li class="px-3 py-2 hover:bg-gray-300 cursor-pointer">${result}</li>').join("")
+    }
+
+    selectResult(event) {
+        this.inputTarget.value = event.target.textContent
+        this.resultsTarget.innerHTML = ""
+        this.element.requestSubmit()
+    }
+
+
 }
