@@ -1,0 +1,21 @@
+<div class="grid grid-cols-1 md:grid-cols-3 items-center p-12 ">
+    <% if @enrollments.any? %>
+        <% enrollments.each do |enrol|%>
+            <%= video_path(enrol.video) %>
+            <div class="mt-5">
+                <%= image_tag enrol.video.thumbnail %>
+            </div>
+
+            <div class="mt-3">
+                <%= enrol.video.title %>
+            </div>
+
+            <div class="mt-3">
+                <%= enrol.video.author %>
+            </div>
+        <% end %>
+        
+    <% else %>
+      <p>You have not yet enrolled in any course </p>
+    <% end %>
+</div>

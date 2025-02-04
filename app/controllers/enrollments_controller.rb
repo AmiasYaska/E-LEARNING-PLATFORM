@@ -8,7 +8,7 @@ class EnrollmentsController < ApplicationController
     end
 
     def index
-        @videos = current_user.enrollments.includes(:video)
+        @enrollments = current_user.enrollments.includes(:video)
     end
 
 end
