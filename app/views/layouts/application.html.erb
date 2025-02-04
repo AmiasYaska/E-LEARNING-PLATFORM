@@ -35,6 +35,13 @@
         <%= link_to 'Home', videos_path %>
       </div>
 
+      <div class="flex">
+        <%= form_with url: videos_path, method: :get, class:"flex gap-2" do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search for anything", class:"border border-gray-400 rounded text-center" %>
+          <%= submit_tag "Search", class:"rounded-xl py-2 px-3 bg-blue-500 text-white hover:bg-blue-300" %>
+        <% end %>
+      </div>
+
       <div class="flex flex-row">
         <div class="mr-5">  
           <% if user_signed_in? %>
