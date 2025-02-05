@@ -21,28 +21,28 @@ videos = [
         author: "Amias Yaska",
         description: "You will learn to code and be able to make web apps asap",
         thumbnail:"code.jpeg",
-        video_file: "video1.mp4"
+        video_file: "cr7.MP4"
     },
     {
         title: "Salsa Dancing",
-        author: "Top A",
+        author: "Michael",
         description: "You may learn to code and be able to make web apps asap",
         thumbnail:"code2.jpeg",
-        video_file: "video1.mp4"
+        video_file: "cr7.MP4"
     },
     {
         title: "Quiz Game",
-        author: "BushPig",
+        author: "NY",
         description: "You will learn to code and be able to make web apps asap",
         thumbnail:"code3.jpeg",
-        video_file: "video1.mp4"
+        video_file: "cr7.MP4"
     },
     {
         title: "Sunday",
-        author: "BushPig",
+        author: "Sports",
         description: "You will learn to code and be able to make web apps asap",
-        thumbnail:"code3.jpeg",
-        video_file: "video1.mp4"
+        thumbnail:"code2.jpeg",
+        video_file: "cr7.MP4"
     },
 ]
 
