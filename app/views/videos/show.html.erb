@@ -2,7 +2,7 @@
   
   <% if @video.video_file.attached? %>
     <% if user_signed_in? && current_user.enrollments.exists?(video: @video) %> 
-    <div id="video-container" data-controller="video-player" data-video-player-video-id-value="<%= @video.id %>">
+    <div data-controller="video-player" >
       <video id="player" playsinline controls preload="auto" class="w-full" >
         <source src="<%=url_for(@video.video_file)%>" type="<%= @video.video_file.content_type %>">
       </video>
@@ -14,19 +14,11 @@
   
   <h3 class="mt-2"><%= @video.title %></h3>
 
-  <p class="mt-5"><%= @video.author %> </p>
+  <p class="mt-2"><%= @video.author %> </p>
 
-  <p class="mt-5"><%= @video.description %> </p>
+  <p class="mt-2"><%= @video.description %> </p>
 
-  <% if user_signed_in? %>
-    <% if current_user.enrollments.exists?(video: @video) %>
-    <% enrollment = current_user.enrollments.find_by(video: @video) %>
-    <div class="mt-5">
-      <p>Watched <%= ((enrollment.progress || 0) * 100).round(1) %> </p>
-    </div>
-
-    <% end %>
-  <% end %>
+  
 
   
   <% if user_signed_in? %>
