@@ -24,60 +24,62 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-100">
+<body class="bg-gray-100">
 
-    <div class="flex flex-row py-8 px-8 justify-between  ">
+  <div class="flex flex-row py-8 px-8 justify-between items-center">
 
-      <div class="flex">
-        <%= link_to 'Home', videos_path %>
-      </div>
-
-      <!-- Search  -->
-      <div data-controller="autocomplete", class="flex items-center text-center">
-        <%= form_with url: videos_path, method: :get, data: {autocomplete_target: "form"}, class:"flex gap-2" do %>
-          <div class="relative">
-            <%= text_field_tag :search, 
-              params[:search], placeholder: "Search for anything", 
-              data: {
-                action: "input->autocomplete#search",
-                autocomplete_target: "input"
-              },
-              class:"border border-gray-400 rounded-full py-2 px-3 text-center" 
-            %>
-
-            <ul class="absolute w-full bg-white mt-1" data-autocomplete-target= "results" data-action="click->autocomplete#selectResult">
-            </ul>
-            </div>
-        <% end %>
-      </div>
-
-      <!-- Menu Icon for Small Screens -->
-      <div data-controller="menu" class="md:hidden">
-        <button data-action="click->menu#toggle" class="text-2xl">
-          ☰
-        </button>
-      </div>
-
-      <!-- Navbar Links -->
-      <div data-menu-target="menu" class="hidden md:flex gap-5 absolute md:static top-16 left-0 w-full md:w-auto bg-gray-100 md:bg-transparent p-5 md:p-0 shadow md:shadow-none">
-        <div class="flex flex-col md:flex-row items-center gap-5">
-          <% if user_signed_in? %>
-            <%= link_to 'My Learning', my_learning_path, class: "block md:inline" %>
-            <%= link_to current_user.first_name, edit_profile_path, class: "block md:inline" %>
-            <%= link_to 'Sign Out', destroy_user_session_path, data: {turbo_method: :delete, confirm: "U wanna sign Out!"}, class: "block md:inline" %>
-          <% else %>
-            <%= link_to 'Log In', new_user_session_path, class: "block md:inline" %>
-          <% end %>
-        </div>
-      </div>
-
+    <div class="flex">
+      <%= link_to 'Home', videos_path %>
     </div>
 
+    <!-- Search -->
+    <div data-controller="autocomplete" class=" md:flex items-center text-center">
+      <%= form_with url: videos_path, method: :get, data: {autocomplete_target: "form"}, class:"flex gap-2" do %>
+        <div class="relative">
+          <%= text_field_tag :search, 
+            params[:search], placeholder: "Search for anything", 
+            data: {
+              action: "input->autocomplete#search",
+              autocomplete_target: "input"
+            },
+            class:"border border-gray-400 rounded-full py-2 px-3 text-center" 
+          %>
+          <ul class="absolute w-full bg-white mt-1" data-autocomplete-target="results" data-action="click->autocomplete#selectResult"></ul>
+        </div>
+      <% end %>
+    </div>
+    <!--  Wrap Menu and Button -->
+    <div data-controller="menu" class="relative w-full">
 
-    <%= yield %>
+      <!--  Menu Icon for Small Screens -->
+      <button data-action="click->menu#toggle" class="text-2xl md:hidden">
+        ☰
+      </button>
 
-    <%= javascript_importmap_tags%>
-    
-  </body>
+      <!-- Navbar Links -->
+      <div data-menu-target="menu" class="hidden flex flex-col items-center gap-5 absolute left-1/2 transform -translate-x-1/2 top-16 w-3/4 bg-white shadow-lg rounded-lg py-5 md:static md:flex-row md:bg-transparent md:shadow-none md:rounded-none md:w-auto md:translate-x-0">
+
+        <div class="flex flex-col items-center md:flex-row md:gap-5">
+          <% if user_signed_in? %>
+            <%= link_to 'My Learning', my_learning_path, class: "block md:inline text-lg" %>
+            <%= link_to current_user.first_name, edit_profile_path, class: "block md:inline text-lg" %>
+            <%= link_to 'Sign Out', destroy_user_session_path, data: {turbo_method: :delete, confirm: "U wanna sign Out!"}, class: "block md:inline text-lg text-red-500" %>
+          <% else %>
+            <%= link_to 'Log In', new_user_session_path, class: "block md:inline text-lg" %>
+          <% end %>
+        </div>
+
+      </div>
+
+</div>
+
+
+  </div>
+
+  <%= yield %>
+
+  <%= javascript_importmap_tags %>
+
+</body>
 
 </html>
